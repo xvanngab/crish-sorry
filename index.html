@@ -135,10 +135,6 @@
             h1 {
                 margin-bottom: 15px; /* Reduce margin below H1 */
             }
-            .letter-button {
-                padding: 12px 25px; /* Adjust button padding */
-                border-radius: 12px; /* Adjust button border-radius */
-            }
             #letter-content {
                 margin-top: 20px; /* Reduce margin above letter content */
                 padding: 0 5px; /* Reduce horizontal padding for letter text */
@@ -234,10 +230,11 @@
                     // Change the button text to "Hide the Letter"
                     toggleLetterButton.textContent = 'Hide the Letter';
                     // Play the music when the letter is revealed
+                    // .catch() is important here to handle potential browser autoplay restrictions
                     backgroundMusic.play().catch(error => {
-                        // Catch any errors if play() fails (e.g., due to user interaction policies)
                         console.log('Autoplay prevented or other error:', error);
-                        // You might want to show a message to the user here, e.g., "Tap the play button below to start music."
+                        // You could add a small message on the page here, e.g.,
+                        // "Browser prevented autoplay. Please use the controls below to play music."
                     });
                 }
             }
