@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crish</title>
+    <!-- Google Fonts - Inter for a modern, readable typeface -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styling */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: #2c003e; /* Deep dark violet */
+            color: #f0e6f6; /* Off-white / light grey-violet for text */
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+            overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+        }
+
+        /* Main Container Styling */
+        .container {
+            max-width: 90%; /* Max width relative to viewport */
+            width: 700px; /* Fixed max width for larger screens */
+            background: rgba(44, 0, 62, 0.7); /* Slightly lighter, semi-transparent violet */
+            border-radius: 20px; /* Rounded corners for the container */
+            padding: clamp(20px, 5vw, 40px); /* Responsive padding: min 20px, ideal 5vw, max 40px */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Soft shadow for depth */
+            text-align: center;
+            margin: 20px auto; /* Center the container with vertical margin */
+            box-sizing: border-box;
+        }
+
+        /* Header Styling */
+        h1 {
+            color: #e0b0ff; /* Light pastel violet for the title */
+            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Responsive font size for H1 */
+            margin-bottom: 20px;
+            font-weight: 700; /* Bold font weight */
+            text-shadow: 0 0 15px rgba(224, 176, 255, 0.7); /* Glow effect for the title */
+        }
+
+        /* Birthday Information Styling */
+        .birthday-info {
+            font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font size for birthday text */
+            margin-bottom: 25px;
+            line-height: 1.5; /* Spacing between lines */
+        }
+
+        #crish-age {
+            font-weight: 600; /* Bold font for the age */
+            color: #ffcc00; /* Golden yellow for emphasis */
+        }
+
+        /* Button Styling */
+        .letter-button {
+            background: linear-gradient(45deg, #a020f0, #ff007f); /* Violet to bright pink gradient */
+            color: white;
+            padding: 15px 35px;
+            border: none; /* No border */
+            border-radius: 15px; /* Rounded button corners */
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem); /* Responsive font size for button text */
+            cursor: pointer; /* Indicate interactivity */
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Smooth hover transitions */
+            font-weight: 600;
+            letter-spacing: 0.5px; /* Slightly increased letter spacing */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Button shadow */
+        }
+
+        .letter-button:hover {
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Enhanced shadow on hover */
+            background: linear-gradient(45deg, #ff007f, #a020f0); /* Reverse gradient on hover */
+        }
+
+        .letter-button:active {
+            transform: translateY(0); /* Press effect on click */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Reduced shadow on active */
+        }
+
+        /* Letter Content Styling */
+        #letter-content {
+            margin-top: 30px;
+            text-align: left; /* Align letter text to the left */
+            line-height: 1.8; /* Comfortable line spacing for readability */
+            font-size: clamp(0.9rem, 2.8vw, 1.1rem); /* Responsive font size for letter text */
+            opacity: 0; /* Initially hidden */
+            max-height: 0; /* Initially collapsed */
+            overflow: hidden; /* Hide overflow content */
+            transition: opacity 1s ease-out, max-height 1s ease-out; /* Smooth transition for reveal */
+            padding: 0 10px; /* Small horizontal padding for text inside the letter div */
+        }
+
+        #letter-content.show {
+            opacity: 1; /* Fully visible when 'show' class is added */
+            max-height: 5000px; /* A large value to ensure all content is revealed */
+            transition: opacity 1.5s ease-in, max-height 1.5s ease-in; /* Longer transition for a dramatic reveal */
+        }
+
+        #letter-content p {
+            margin-bottom: 1em; /* Spacing between paragraphs */
+            text-indent: 1.5em; /* Indent first line of paragraphs for a traditional letter feel */
+        }
+
+        /* Audio controls styling */
+        .audio-controls {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 400px; /* Limit width of audio player */
+        }
+
+        .audio-controls audio {
+            width: 100%;
+            border-radius: 10px;
+            outline: none; /* Remove default focus outline */
+            /* Style the default audio controls to match the theme */
+            filter: sepia(50%) hue-rotate(200deg) saturate(150%) brightness(120%);
+        }
+
+        /* Responsive adjustments for smaller screens (e.g., mobile phones) */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px; /* Reduce overall body padding */
+            }
+            .container {
+                padding: clamp(15px, 4vw, 30px); /* Adjust container padding for smaller screens */
+                border-radius: 15px; /* Slightly smaller border-radius */
+            }
+            h1 {
+                margin-bottom: 15px; /* Reduce margin below H1 */
+            }
+            .letter-button {
+                padding: 12px 25px; /* Adjust button padding */
+                border-radius: 12px; /* Adjust button border-radius */
+            }
+            #letter-content {
+                margin-top: 20px; /* Reduce margin above letter content */
+                padding: 0 5px; /* Reduce horizontal padding for letter text */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crish</h1>
+
+        <div class="birthday-info">
+            <p>Crish's Birthday: January 11, 2012</p>
+            <p>She is currently <span id="crish-age">...</span> years old.</p>
+        </div>
+
+        <button class="letter-button" id="toggleLetterButton">Read the Letter</button>
+
+        <div id="letter-content">
+            <p>Hi. I don’t even know where to start because every time I think about you my heart feels heavy and full at the same time. I just want to tell you everything because you deserve to hear it all. You deserve to know that every single day when I wake up you’re the first thought in my mind. Even when I seem quiet or distracted you’re always there. You’ve become a part of me that I can’t remove, like the way I breathe or the way my heart beats, you’re just always there.</p>
+            <p>I’m sorry. Not just the kind of sorry people say when they make a mistake but the kind of sorry that stays in your chest and keeps you awake at night. I’m sorry for all the times you felt alone even though I was supposed to be there. I’m sorry for every time you wondered if you still mattered to me when the truth is you’ve always been the only one that really mattered. I’m sorry for all the ways I let my fear or my doubts get louder than my love for you. You are the most beautiful thing that ever happened to me. You’re the reason my world has color and the reason I believe love is even real. I still remember when it all started, how just seeing your name could make my entire day better, how hearing your voice felt like home, how even the smallest things about you made me smile like an idiot. That hasn’t changed. Not even a little. Not even when I mess up or when things feel hard or when you feel far away. You’re still the only one I see.</p>
+            <p>Sometimes I imagine what it would be like years from now, still with you, still holding your hand, still looking at you like you’re the most precious thing in my life. Every time I think about that it makes me want you even more. You make me feel like nothing else matters. Like even if the world fell apart I’d still be okay as long as you’re here. You’re not just someone I love, you’re my love itself. You’re the feeling, the reason, the quiet in my storms. I know there were moments you felt invisible, like I stopped noticing you. But I never did. Not for a second. Every word you said stayed with me. Every laugh, every tear, every little thing about you — I noticed it all. You are so beautiful. In ways you probably don’t even realize. In the way you care about others, in the way you love even when you’re hurting, in the way you keep giving even when you’re tired.</p>
+            <p>Sometimes I wonder if you ever doubt how much I care. If you ever sit and wonder if you’re enough. And it kills me to think you felt that way even once. Because you’ve always been enough. More than enough. You’re everything. I know I can be hard to love sometimes. I know I overthink and shut down and leave you guessing. But you’ve never been anything less than the center of my heart. If I could go back to every moment I hurt you I would. I’d hold you closer, listen better, love you louder. But even now, all I can promise is that I’ll keep trying. I’ll keep choosing you. Every single day.</p>
+            <p>You’re not just my girlfriend. You’re my best friend, my safe place, my home. You’re the one I want to tell everything to, the one I want to wake up next to for the rest of my life. You’re the one I want to grow with and laugh with and cry with. You’ve done so much for me — more than you know. All the little ways you loved me when I didn’t even feel lovable. All the times you were patient when I was stubborn. All the ways you stayed when you could’ve walked away. Thank you. Thank you for being here. Thank you for loving me. Thank you for being you.</p>
+            <p>And even if one day you decide to leave, even if you feel too tired to stay, I’ll still love you. You’re unforgettable. Irreplaceable. You’re my gorgeous, beautiful, precious princess baby. If the spark feels small now, let me light it again. If your heart feels heavy now, let me help carry it. If you’re wondering whether this is worth it, please know — you are worth everything. You’re not a chapter in my story. You’re the whole book. The whole meaning. And if you let me, I’ll spend the rest of my life proving it to you. I’ll never stop choosing you. Not today. Not tomorrow. Not ever.</p>
+            <p>You are my home. My person. My always. And I love you more than words could ever explain.</p>
+            <!-- New message added here -->
+            <p>And I wish I could spend forever just showing you all the little ways you are beautiful to me because it’s not just in how you look but in how you are. It’s in the way you never give up even when you’re tired. It’s in the way you keep loving even when you’ve been hurt. It’s in the way you speak and move and simply exist. I love you for all of it. I love you for the things you show me and for the things you try to hide. I love you for your strength and I love you for your softness.</p>
+            <p>Sometimes I catch myself just thinking about you and I feel my chest get heavy because I don’t know if you really understand how much space you take up in my heart. You are everywhere in my thoughts. You’re in every plan I make in every dream I have in every quiet wish I whisper to myself. You are the reason I want to become a better person. You are the reason I keep going even on the hard days.</p>
+            <p>Every time I see your name or hear your voice it feels like the first time all over again. My heart still races. My hands still feel nervous like I’m holding something precious that I can never afford to drop. And the truth is that’s exactly what you are — the most precious part of my life.</p>
+            <p>If I could spend the rest of my days just loving you I would. If all I ever do in this world is make sure you feel safe and wanted and loved then I will have done enough. You are not just someone I love — you are the reason I believe love exists at all.</p>
+            <p>And even if I live a thousand lifetimes I know I would still choose you in every single one. You are my heart my home my everything.</p>
+            <p>So please remember this always — you are loved more than you know more than you can measure more than I can ever fully express. You are loved deeply completely endlessly. And as long as my heart is beating it will always belong to you.</p>
+        </div>
+
+        <div class="audio-controls">
+            <!-- IMPORTANT: Replace 'YOUR_DIRECT_MP3_LINK_HERE.mp3' with the raw URL from your GitHub repository. -->
+            <!-- Example: https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME/main/soapdish-tensionado.mp3 -->
+            <audio id="background-music" controls loop>
+                <source src="YOUR_DIRECT_MP3_LINK_HERE.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        // Ensure the script runs only after the entire HTML document has been loaded and parsed.
+        window.onload = function() {
+            // Get references to the HTML elements we need to interact with
+            const toggleLetterButton = document.getElementById('toggleLetterButton');
+            const letterContent = document.getElementById('letter-content');
+            const crishAgeSpan = document.getElementById('crish-age');
+            const backgroundMusic = document.getElementById('background-music'); // Get the audio element
+
+            // Function to calculate and display Crish's current age
+            function calculateAge() {
+                // Define Crish's birthday (January 11, 2012)
+                // Using T00:00:00 ensures the time component is set to midnight UTC, avoiding timezone issues
+                const birthday = new Date('2012-01-11T00:00:00');
+                const today = new Date(); // Get the current date
+
+                // Calculate the difference in years
+                let age = today.getFullYear() - birthday.getFullYear();
+                
+                // Calculate the difference in months
+                const monthDifference = today.getMonth() - birthday.getMonth();
+                
+                // Calculate the difference in days
+                const dayDifference = today.getDate() - birthday.getDate();
+
+                // Adjust the age if her birthday hasn't occurred yet in the current year
+                // This handles cases where, for example, it's December 2023 but her birthday is January 2024
+                if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+                    age--; // Decrement age if birthday for this year hasn't passed
+                }
+                
+                // Update the text content of the span element with Crish's calculated age
+                crishAgeSpan.textContent = age;
+            }
+
+            // Function to toggle the visibility of the letter content and control music playback
+            function toggleLetter() {
+                // Check if the 'show' class is currently present on the letter content div
+                if (letterContent.classList.contains('show')) {
+                    // If it has 'show', remove it to hide the letter
+                    letterContent.classList.remove('show');
+                    // Change the button text back to "Read the Letter"
+                    toggleLetterButton.textContent = 'Read the Letter';
+                    // Pause the music when the letter is hidden
+                    backgroundMusic.pause();
+                } else {
+                    // If it does not have 'show', add it to reveal the letter
+                    letterContent.classList.add('show');
+                    // Change the button text to "Hide the Letter"
+                    toggleLetterButton.textContent = 'Hide the Letter';
+                    // Play the music when the letter is revealed
+                    backgroundMusic.play().catch(error => {
+                        // Catch any errors if play() fails (e.g., due to user interaction policies)
+                        console.log('Autoplay prevented or other error:', error);
+                        // You might want to show a message to the user here, e.g., "Tap the play button below to start music."
+                    });
+                }
+            }
+
+            // Attach an event listener to the button: when clicked, call the toggleLetter function
+            toggleLetterButton.addEventListener('click', toggleLetter);
+
+            // Call calculateAge immediately when the page loads to display the initial age
+            calculateAge();
+        };
+    </script>
+</body>
+</html>
+
