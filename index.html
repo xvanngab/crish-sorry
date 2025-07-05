@@ -108,19 +108,9 @@
             text-indent: 1.5em; /* Indent first line of paragraphs for a traditional letter feel */
         }
 
-        /* Audio controls styling */
+        /* Hide the audio controls container entirely, as the audio element itself will be hidden */
         .audio-controls {
-            margin-top: 30px;
-            width: 100%;
-            max-width: 400px; /* Limit width of audio player */
-        }
-
-        .audio-controls audio {
-            width: 100%;
-            border-radius: 10px;
-            outline: none; /* Remove default focus outline */
-            /* Style the default audio controls to match the theme */
-            filter: sepia(50%) hue-rotate(200deg) saturate(150%) brightness(120%);
+            display: none; /* This hides the entire div containing the audio player */
         }
 
         /* Responsive adjustments for smaller screens (e.g., mobile phones) */
@@ -172,7 +162,8 @@
 
         <div class="audio-controls">
             <!-- The direct raw MP3 link from your GitHub repository -->
-            <audio id="background-music" controls loop>
+            <!-- Removed 'controls' attribute to hide the player UI -->
+            <audio id="background-music" loop>
                 <source src="https://raw.githubusercontent.com/xvanngab/crish-sorry/main/soapdish-tensionado.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
